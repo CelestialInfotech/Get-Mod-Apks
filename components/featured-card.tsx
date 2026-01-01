@@ -3,6 +3,7 @@ import { Star, RotateCw } from "lucide-react"
 import { initAnalytics } from "@/lib/firebase"
 import { logEvent } from "firebase/analytics"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 interface AppData {
   id: string
@@ -16,16 +17,19 @@ interface AppData {
 }
 
 export function FeaturedCard({ app }: { app: AppData }) {
+  const router = useRouter()
+
   const handleDownload = async () => {
     const analytics = await initAnalytics()
     if (analytics) {
-      logEvent(analytics, "download_click", {
+      logEvent(analytics, "app_view", {
         app_id: app.id,
         app_name: app.title,
-        app_version: app.version,
-        category: "featured",
+        version: app.version,
+        size: app.size,
       })
     }
+    router.push(`/details/${app.id}`)
   }
 
   return (

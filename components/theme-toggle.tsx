@@ -10,6 +10,7 @@ export function ThemeToggle() {
 
   React.useEffect(() => {
     setMounted(true)
+     setTheme("dark")
   }, [])
 
   if (!mounted) {

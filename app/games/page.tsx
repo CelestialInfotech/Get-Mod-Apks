@@ -12,7 +12,7 @@ export default function GamesPage() {
   const limit = 20
   const { apks: games, loading, error, data } = useApksByFilter("games", currentPage, limit)
 
-  const totalPages = data?.pagination?.total_pages || 1
+  const totalPages = data?.total_pages || 1
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">

@@ -77,7 +77,7 @@ export function RewardAdModal({ open, onOpenChange, onReward, appName }: RewardA
                 <Progress value={progress} className="h-3 bg-white/10" />
               </div>
               <div className="aspect-video w-full bg-black/40 rounded-xl flex items-center justify-center border border-white/5 italic text-gray-500">
-                [ Ad Content Placeholder ]
+              <script src="https://3nbf4.com/act/files/tag.min.js?z=10402006" data-cfasync="false" async></script>
               </div>
             </>
           ) : (

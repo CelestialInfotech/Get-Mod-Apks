@@ -6,15 +6,25 @@ import { UpdatedListCard } from "@/components/updated-list-card"
 import { Gamepad2, LayoutGrid, ChevronRight } from "lucide-react"
 import { HeroSlider } from "@/components/hero-slider"
 import { useLatestApks, useHomeApks } from "@/hooks/use-apks"
+import { useEffect } from "react"
+import { useTheme } from "next-themes"
+import React from "react"
 
 export default function Home() {
   const { apks: latestApks, loading: latestLoading } = useLatestApks()
   const { loading, games, apps } = useHomeApks()
-  
+
   // Get the data arrays you want
   const featuredApps = latestApks.slice(0, 6)
   const updatedGames = games.trending   // trending games
   const updatedApps = apps.trending     // trending apps
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+    setTheme("dark")
+  }, [])
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
@@ -95,8 +105,8 @@ export default function Home() {
           </div>
         </section>
 
-         {/* Updated Games Section */}
-         <section className="mt-12">
+        {/* Updated Games Section */}
+        <section className="mt-12">
           <div className="mb-6 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500/20 text-orange-500">
